@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PYNX</title>
 
+    <!-- Orbitron Font -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -16,6 +17,10 @@
             --text-dark: #08384d;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -23,10 +28,42 @@
             color: var(--text-dark);
         }
 
-        /* HERO (top section) */
+        /* NAVBAR */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid var(--blueprint-line);
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 36px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            font-family: Orbitron;
+            font-size: 13px;
+            letter-spacing: 0.14em;
+            color: var(--primary-blue);
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            opacity: 0.7;
+        }
+
+        /* HERO */
         .hero {
             text-align: center;
-            padding: 90px 20px 50px; /* height reduced from 140px */
+            padding: 90px 20px 50px;
             background-image:
                 linear-gradient(to right, transparent 95%, var(--blueprint-line) 100%),
                 linear-gradient(to bottom, transparent 95%, var(--blueprint-line) 100%);
@@ -42,7 +79,7 @@
             margin-bottom: 8px;
         }
 
-        /* Sections */
+        /* SECTIONS */
         section {
             max-width: 1100px;
             margin: 0 auto;
@@ -63,7 +100,7 @@
             max-width: 780px;
         }
 
-        /* Services */
+        /* GRID + CARDS */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -104,7 +141,17 @@
 
 <body>
 
-    <!-- HERO WITHOUT NAVBAR -->
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="#products">PRODUCTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
     <div class="hero">
         <div class="hero-title">PYNX</div>
     </div>
@@ -113,31 +160,27 @@
     <section id="about">
         <h2>ABOUT US</h2>
         <p>
-            PYNX ek future-ready system-driven platform hai jo automation, structure aur discipline ko priority deta hai.
-            Yaha trading emotion se nahi — systems se hoti hai.
+            PYNX ek future-ready system-driven platform hai jaha trading emotion se nahi,
+            balki automation, structure aur discipline se hoti hai.
         </p>
     </section>
 
     <!-- SERVICES -->
     <section id="services">
         <h2>SERVICES</h2>
-
         <div class="services-grid">
             <div class="card">
                 <h3>Crypto Automation</h3>
                 <p>BTC, ETH aur SOL ke liye rule-based automated trading engines.</p>
             </div>
-
             <div class="card">
                 <h3>Stock Market Systems</h3>
                 <p>NIFTY, BANKNIFTY aur indices ke liye structured strategies.</p>
             </div>
-
             <div class="card">
                 <h3>Gold & FX Models</h3>
                 <p>XAUUSD & forex ke liye multi-timeframe professional setups.</p>
             </div>
-
             <div class="card">
                 <h3>Custom Trading Bots</h3>
                 <p>Python, MT5, alerts, dashboards aur full automation.</p>
@@ -145,13 +188,40 @@
         </div>
     </section>
 
-    <!-- FOUNDER -->
-    <section id="founder">
-        <h2>FOUNDER</h2>
-        <p>
-            <strong>Krunal Chawada</strong><br>
-            Systems Designer & Market Structure Specialist.
-        </p>
+    <!-- PRODUCTS -->
+    <section id="products">
+        <h2>PRODUCTS</h2>
+        <div class="services-grid">
+            <div class="card">
+                <h3>XRP Continuation EA</h3>
+                <p>EMA-based continuation pyramid Expert Advisor for MT5.</p>
+                <p>
+                    • Fixed TP per layer<br>
+                    • Controlled pyramid entries<br>
+                    • Intraday risk management
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>EMA Trend Toolkit</h3>
+                <p>Trend identification & continuation framework.</p>
+                <p>
+                    • Multi-timeframe logic<br>
+                    • Structure-based entries<br>
+                    • Automation ready
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Custom Bot Build</h3>
+                <p>Fully customized trading bots.</p>
+                <p>
+                    • MT5 / Python<br>
+                    • Alerts & automation<br>
+                    • Private deployment
+                </p>
+            </div>
+        </div>
     </section>
 
     <!-- CONTACT -->
@@ -168,6 +238,4 @@
     </footer>
 
 </body>
-
 </html>
-
