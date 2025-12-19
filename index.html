@@ -13,7 +13,7 @@
   --green-soft:#6deac3;
   --green-dark:#04130e;
   --glass:rgba(0,255,170,0.08);
-  --line:rgba(0,255,170,0.25);
+  --line:rgba(0,255,170,0.35);
   --white:#ffffff;
 }
 
@@ -32,17 +32,35 @@ body{
   overflow-x:hidden;
 }
 
-/* TRON GRID / CIRCUIT */
+/* ===== TRON BIKE FLOOR (PERSPECTIVE LINES) ===== */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    linear-gradient(90deg, transparent 96%, var(--line) 97%),
-    linear-gradient(0deg, transparent 96%, var(--line) 97%);
-  background-size:120px 120px;
-  opacity:.25;
+    repeating-linear-gradient(
+      to top,
+      rgba(0,255,170,0.35) 0px,
+      rgba(0,255,170,0.35) 1px,
+      transparent 1px,
+      transparent 60px
+    );
+  transform-origin: bottom;
+  transform: perspective(700px) rotateX(65deg);
+  opacity:.35;
   z-index:-1;
+}
+
+/* CENTER GLOW / VANISH POINT */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at center bottom,
+      rgba(0,255,170,0.45),
+      transparent 60%);
+  z-index:-2;
 }
 
 /* NAVBAR */
@@ -50,7 +68,7 @@ body::before{
   position:sticky;
   top:0;
   z-index:10;
-  background:rgba(0,0,0,.4);
+  background:rgba(0,0,0,.45);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
 }
@@ -71,7 +89,7 @@ body::before{
 }
 .navbar a:hover{
   color:var(--green-main);
-  text-shadow:0 0 10px var(--green-main);
+  text-shadow:0 0 12px var(--green-main);
 }
 
 /* HERO */
@@ -90,13 +108,13 @@ body::before{
   font-weight:700;
   color:var(--green-main);
   text-shadow:
-    0 0 25px rgba(0,255,170,0.5),
-    0 0 60px rgba(0,255,170,0.25);
+    0 0 25px rgba(0,255,170,0.6),
+    0 0 80px rgba(0,255,170,0.35);
   animation:fadeUp 1.5s ease;
   position:relative;
 }
 
-/* TRON LIGHT SWEEP */
+/* LIGHT SWEEP */
 .hero-title::after{
   content:"";
   position:absolute;
@@ -104,7 +122,7 @@ body::before{
   background:linear-gradient(
     90deg,
     transparent 40%,
-    rgba(255,255,255,.6) 50%,
+    rgba(255,255,255,.7) 50%,
     transparent 60%
   );
   animation:sweep 3s linear infinite;
@@ -122,7 +140,7 @@ h2{
   letter-spacing:.22em;
   margin-bottom:30px;
   color:var(--green-main);
-  text-shadow:0 0 15px rgba(0,255,170,.35);
+  text-shadow:0 0 18px rgba(0,255,170,.4);
 }
 p{
   font-size:16px;
@@ -138,7 +156,7 @@ p{
   margin-top:50px;
 }
 
-/* CARDS – TRON GLASS */
+/* CARDS */
 .card{
   background:var(--glass);
   border:1px solid var(--line);
@@ -150,20 +168,19 @@ p{
   overflow:hidden;
 }
 
-/* CARD GLOW LINE */
 .card::before{
   content:"";
   position:absolute;
   inset:0;
   border-radius:22px;
-  background:linear-gradient(120deg, transparent, rgba(0,255,170,.4), transparent);
+  background:linear-gradient(120deg, transparent, rgba(0,255,170,.5), transparent);
   opacity:0;
   transition:.4s;
 }
 
 .card:hover{
   transform:translateY(-10px);
-  box-shadow:0 0 35px rgba(0,255,170,.25);
+  box-shadow:0 0 40px rgba(0,255,170,.35);
 }
 .card:hover::before{
   opacity:1;
@@ -181,7 +198,7 @@ footer{
   text-align:center;
   padding:40px;
   border-top:1px solid var(--line);
-  background:rgba(0,0,0,.4);
+  background:rgba(0,0,0,.45);
   font-size:14px;
   color:#bfffee;
 }
