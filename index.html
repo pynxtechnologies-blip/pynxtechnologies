@@ -11,10 +11,10 @@
 
     <style>
         :root {
-            --primary-blue: #0b4f6c;
-            --soft-blue: #cfe9f6;
-            --blueprint-line: rgba(11, 79, 108, 0.18);
-            --text-dark: #08384d;
+            --primary-green: #1f6f4a;
+            --soft-green: #dff3ea;
+            --circuit-line: rgba(31, 111, 74, 0.18);
+            --text-dark: #124a34;
         }
 
         html {
@@ -24,7 +24,9 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(207, 233, 246, 0.95));
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.75),
+                    rgba(223, 243, 234, 0.95));
             color: var(--text-dark);
         }
 
@@ -35,7 +37,7 @@
             z-index: 1000;
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(6px);
-            border-bottom: 1px solid var(--blueprint-line);
+            border-bottom: 1px solid var(--circuit-line);
         }
 
         .navbar ul {
@@ -52,7 +54,7 @@
             font-family: Orbitron;
             font-size: 13px;
             letter-spacing: 0.14em;
-            color: var(--primary-blue);
+            color: var(--primary-green);
             transition: 0.3s;
         }
 
@@ -63,11 +65,11 @@
         /* HERO */
         .hero {
             text-align: center;
-            padding: 90px 20px 50px;
+            padding: 90px 20px 60px;
             background-image:
-                linear-gradient(to right, transparent 95%, var(--blueprint-line) 100%),
-                linear-gradient(to bottom, transparent 95%, var(--blueprint-line) 100%);
-            background-size: 40px 40px;
+                linear-gradient(to right, transparent 95%, var(--circuit-line) 100%),
+                linear-gradient(to bottom, transparent 95%, var(--circuit-line) 100%);
+            background-size: 42px 42px;
         }
 
         .hero-title {
@@ -75,7 +77,19 @@
             font-size: 58px;
             font-weight: 700;
             letter-spacing: 0.28em;
-            color: var(--primary-blue);
+            color: var(--primary-green);
+            position: relative;
+        }
+
+        /* subtle internal circuit feel */
+        .hero-title::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, transparent 45%, rgba(31, 111, 74, 0.15) 50%, transparent 55%);
+            mix-blend-mode: overlay;
+            pointer-events: none;
         }
 
         /* SECTIONS */
@@ -90,7 +104,7 @@
             font-size: 32px;
             letter-spacing: 0.12em;
             margin-bottom: 18px;
-            color: var(--primary-blue);
+            color: var(--primary-green);
         }
 
         p {
@@ -111,29 +125,29 @@
             background: rgba(255, 255, 255, 0.65);
             padding: 24px;
             border-radius: 14px;
-            border: 1px solid var(--blueprint-line);
+            border: 1px solid var(--circuit-line);
             transition: 0.35s;
         }
 
         .card:hover {
             transform: translateY(-6px);
-            border-color: var(--primary-blue);
+            border-color: var(--primary-green);
         }
 
         .card h3 {
             font-family: Orbitron;
             font-size: 18px;
             margin-bottom: 10px;
-            color: var(--primary-blue);
+            color: var(--primary-green);
             letter-spacing: 0.08em;
         }
 
         footer {
             text-align: center;
             padding: 30px;
-            border-top: 1px solid var(--blueprint-line);
+            border-top: 1px solid var(--circuit-line);
             font-size: 14px;
-            color: #5c7e8f;
+            color: #4f7f69;
         }
     </style>
 </head>
@@ -192,135 +206,11 @@
         </div>
     </section>
 
-    <!-- PRODUCTS -->
-    <section id="products">
-        <h2>PRODUCTS</h2>
-
-        <p>
-            We provide full trading platform solutions for
-            <strong>Crypto | Forex | Indian Markets</strong>
-        </p>
-
-        <div class="services-grid">
-
-            <div class="card">
-                <h3>Automated Trading Bots</h3>
-                <p>
-                    • Scalping Bot<br>
-                    • Hedging Bot<br>
-                    • Grid Bot<br>
-                    • GAP Trading Bot<br>
-                    • One-Side Market Bot<br>
-                    • Sideway Market Bot<br>
-                    • Martingale Bot<br><br>
-                    💵 Many more custom bots available
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>TradingView Solutions</h3>
-                <p>
-                    • TradingView Indicators<br>
-                    • TradingView Strategies<br>
-                    • TradingView Backtesting Systems
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>MT4 / MT5 Solutions</h3>
-                <p>
-                    • MT4 / MT5 Expert Advisors<br>
-                    • MT4 / MT5 Strategies<br>
-                    • Forex Robots<br>
-                    • Crypto Robots
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Algo Trading Software</h3>
-                <p>
-                    • Algo Trading Software<br>
-                    • Algo Trading Strategies<br>
-                    • Algo Trading Bots<br>
-                    • Algo Trading Automation
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Copy Trading Systems</h3>
-                <p>
-                    • Single Account Copy Trading<br>
-                    • Multi Account Copy Trading
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Indicators & Technical Logic</h3>
-                <p>
-                    • MA / EMA<br>
-                    • RSI, MACD<br>
-                    • Fibonacci<br>
-                    • Ichimoku Cloud<br>
-                    • Pivot Points<br>
-                    • Momentum & Divergence<br>
-                    • Elliott Wave (Rule-Based)
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Price Action & Structure</h3>
-                <p>
-                    • Candlestick Patterns<br>
-                    • Chart Patterns<br>
-                    • Trendlines & Channels<br>
-                    • Support & Resistance<br>
-                    • Supply & Demand Zones<br>
-                    • Breakout & Retest<br>
-                    • GAP Trading
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Risk & Trade Management</h3>
-                <p>
-                    • Risk Management Systems<br>
-                    • Risk–Reward Optimization<br>
-                    • Position Sizing<br>
-                    • Scaling In / Out<br>
-                    • Partial Exits<br>
-                    • Session-Based Logic
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Custom Algo Engineering</h3>
-                <p>
-                    We build <strong>tailor-made algorithms</strong> by combining
-                    indicators, price action, and custom logic
-                    based on trader requirements.
-                    <br><br>
-                    Platforms:<br>
-                    • MT4 / MT5<br>
-                    • TradingView<br>
-                    • Crypto Markets<br>
-                    • Indian Markets
-                </p>
-            </div>
-
-        </div>
-
-        <p style="font-size:13px; color:#5c7e8f; margin-top:30px;">
-            Disclaimer: Trading involves risk. All systems are rule-based software solutions.
-            Past performance does not guarantee future results.
-        </p>
-
-    </section>
-
     <!-- CONTACT -->
     <section id="contact">
         <h2>CONTACT</h2>
         <p>
-            📲 Telegram: <strong>@PYNX</strong><br>
+            📲 Telegram: <strong>@PynxWealthtech</strong><br>
             For software, tools, and trading platform related enquiries.
         </p>
     </section>
