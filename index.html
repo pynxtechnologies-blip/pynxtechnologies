@@ -13,7 +13,7 @@
   --green-soft:#6deac3;
   --green-dark:#04130e;
   --glass:rgba(0,255,170,0.08);
-  --line:rgba(0,255,170,0.35);
+  --line:rgba(0,255,170,0.45);
   --white:#ffffff;
 }
 
@@ -27,39 +27,45 @@ body{
   font-family:Orbitron,Arial,sans-serif;
   color:var(--white);
   background:
-    radial-gradient(circle at center, rgba(0,255,170,0.15), transparent 60%),
+    radial-gradient(circle at center, rgba(0,255,170,0.18), transparent 55%),
     linear-gradient(180deg, #020b08, #000);
   overflow-x:hidden;
 }
 
-/* ===== TRON BIKE FLOOR (PERSPECTIVE LINES) ===== */
+/* ===== STRONG TRON BIKE FLOOR ===== */
 body::before{
   content:"";
   position:fixed;
-  inset:0;
+  left:-30%;
+  right:-30%;
+  bottom:-12%;
+  top:38%;
   background:
     repeating-linear-gradient(
       to top,
-      rgba(0,255,170,0.35) 0px,
-      rgba(0,255,170,0.35) 1px,
-      transparent 1px,
-      transparent 60px
+      rgba(0,255,170,0.65) 0px,
+      rgba(0,255,170,0.65) 2px,
+      transparent 2px,
+      transparent 38px
     );
-  transform-origin: bottom;
-  transform: perspective(700px) rotateX(65deg);
-  opacity:.35;
+  transform-origin: bottom center;
+  transform: perspective(520px) rotateX(72deg);
+  opacity:.75;
   z-index:-1;
 }
 
-/* CENTER GLOW / VANISH POINT */
+/* VANISH POINT / ENERGY GLOW */
 body::after{
   content:"";
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at center bottom,
-      rgba(0,255,170,0.45),
-      transparent 60%);
+    radial-gradient(
+      ellipse at center bottom,
+      rgba(0,255,170,0.75),
+      rgba(0,255,170,0.35) 35%,
+      transparent 70%
+    );
   z-index:-2;
 }
 
@@ -68,7 +74,7 @@ body::after{
   position:sticky;
   top:0;
   z-index:10;
-  background:rgba(0,0,0,.45);
+  background:rgba(0,0,0,.5);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
 }
@@ -89,7 +95,7 @@ body::after{
 }
 .navbar a:hover{
   color:var(--green-main);
-  text-shadow:0 0 12px var(--green-main);
+  text-shadow:0 0 14px var(--green-main);
 }
 
 /* HERO */
@@ -108,8 +114,8 @@ body::after{
   font-weight:700;
   color:var(--green-main);
   text-shadow:
-    0 0 25px rgba(0,255,170,0.6),
-    0 0 80px rgba(0,255,170,0.35);
+    0 0 30px rgba(0,255,170,0.7),
+    0 0 90px rgba(0,255,170,0.45);
   animation:fadeUp 1.5s ease;
   position:relative;
 }
@@ -122,7 +128,7 @@ body::after{
   background:linear-gradient(
     90deg,
     transparent 40%,
-    rgba(255,255,255,.7) 50%,
+    rgba(255,255,255,.8) 50%,
     transparent 60%
   );
   animation:sweep 3s linear infinite;
@@ -140,7 +146,7 @@ h2{
   letter-spacing:.22em;
   margin-bottom:30px;
   color:var(--green-main);
-  text-shadow:0 0 18px rgba(0,255,170,.4);
+  text-shadow:0 0 18px rgba(0,255,170,.45);
 }
 p{
   font-size:16px;
@@ -173,14 +179,14 @@ p{
   position:absolute;
   inset:0;
   border-radius:22px;
-  background:linear-gradient(120deg, transparent, rgba(0,255,170,.5), transparent);
+  background:linear-gradient(120deg, transparent, rgba(0,255,170,.6), transparent);
   opacity:0;
   transition:.4s;
 }
 
 .card:hover{
   transform:translateY(-10px);
-  box-shadow:0 0 40px rgba(0,255,170,.35);
+  box-shadow:0 0 45px rgba(0,255,170,.45);
 }
 .card:hover::before{
   opacity:1;
@@ -198,7 +204,7 @@ footer{
   text-align:center;
   padding:40px;
   border-top:1px solid var(--line);
-  background:rgba(0,0,0,.45);
+  background:rgba(0,0,0,.5);
   font-size:14px;
   color:#bfffee;
 }
