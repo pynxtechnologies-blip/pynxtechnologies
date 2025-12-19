@@ -1,253 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PYNX Technologies</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PYNX Technologies</title>
 
-    <!-- Orbitron Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --green-main: #7fbf5f;
-            --green-dark: #4f7f3a;
-            --green-card: rgba(140, 200, 110, 0.55);
-            --circuit-line: rgba(255, 255, 255, 0.18);
-            --white: #ffffff;
-        }
+<style>
+:root{
+  --green-main:#7fcf8a;
+  --green-soft:rgba(140,220,160,0.55);
+  --circuit:rgba(255,255,255,0.18);
+  --white:#ffffff;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+html{scroll-behavior:smooth}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: var(--white);
-            overflow-x: hidden;
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  color:var(--white);
+  background:
+    radial-gradient(circle at center,rgba(200,255,210,.35),rgba(70,130,90,.95)),
+    linear-gradient(135deg,#6fbf84,#3f7f5a);
+  overflow-x:hidden;
+}
 
-            background:
-                radial-gradient(circle at center,
-                    rgba(200, 255, 170, 0.35),
-                    rgba(90, 150, 60, 0.95)),
-                linear-gradient(135deg,
-                    #7fbf5f,
-                    #4f7f3a);
-        }
+/* CIRCUIT BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background-image:
+    repeating-linear-gradient(135deg,transparent 0 38px,var(--circuit) 39px 40px),
+    repeating-linear-gradient(45deg,transparent 0 58px,var(--circuit) 59px 60px);
+  opacity:.35;
+}
 
-        /* CIRCUIT BACKGROUND */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
+/* NAVBAR */
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(0,0,0,.15);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--circuit);
+}
+.navbar ul{
+  list-style:none;
+  margin:0;
+  padding:16px;
+  display:flex;
+  justify-content:center;
+  gap:36px;
+}
+.navbar a{
+  font-family:Orbitron;
+  font-size:13px;
+  letter-spacing:.16em;
+  text-decoration:none;
+  color:var(--white);
+}
 
-            background-image:
-                linear-gradient(to right, transparent 96%, var(--circuit-line) 100%),
-                linear-gradient(to bottom, transparent 96%, var(--circuit-line) 100%);
-            background-size: 56px 56px;
-            opacity: 0.45;
-        }
+/* HERO */
+.hero{
+  text-align:center;
+  padding:120px 20px 90px;
+}
+.hero-title{
+  font-family:Orbitron;
+  font-size:64px;
+  font-weight:700;
+  letter-spacing:.32em;
+  position:relative;
+}
+.hero-title::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,transparent 42%,rgba(255,255,255,.35) 50%,transparent 58%);
+  mix-blend-mode:overlay;
+}
 
-        /* NAVBAR */
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--circuit-line);
-        }
+/* SECTIONS */
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:80px 20px;
+}
+h2{
+  font-family:Orbitron;
+  font-size:32px;
+  letter-spacing:.14em;
+  margin-bottom:20px;
+}
+p{
+  font-size:16px;
+  line-height:1.9em;
+}
 
-        .navbar ul {
-            list-style: none;
-            margin: 0;
-            padding: 16px 20px;
-            display: flex;
-            justify-content: center;
-            gap: 36px;
-        }
+/* GRID + CARDS */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  margin-top:40px;
+}
+.card{
+  background:var(--green-soft);
+  padding:26px;
+  border-radius:18px;
+  border:1px solid var(--circuit);
+  backdrop-filter:blur(6px);
+  transition:.35s;
+}
+.card:hover{
+  transform:translateY(-8px);
+}
+.card h3{
+  font-family:Orbitron;
+  font-size:18px;
+  margin-bottom:12px;
+  letter-spacing:.1em;
+}
+.card p{
+  font-size:15px;
+}
 
-        .navbar a {
-            text-decoration: none;
-            font-family: Orbitron;
-            font-size: 13px;
-            letter-spacing: 0.18em;
-            color: var(--white);
-            transition: 0.3s;
-        }
-
-        .navbar a:hover {
-            opacity: 0.7;
-        }
-
-        /* HERO */
-        .hero {
-            text-align: center;
-            padding: 130px 20px 100px;
-            background:
-                radial-gradient(circle at center,
-                    rgba(255, 255, 255, 0.25),
-                    transparent 70%);
-        }
-
-        .hero-title {
-            font-family: Orbitron;
-            font-size: 68px;
-            font-weight: 700;
-            letter-spacing: 0.34em;
-            color: var(--white);
-            position: relative;
-            display: inline-block;
-        }
-
-        /* INTERNAL CIRCUIT FEEL ON TEXT */
-        .hero-title::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(90deg,
-                    transparent 40%,
-                    rgba(255, 255, 255, 0.35) 50%,
-                    transparent 60%);
-            mix-blend-mode: overlay;
-            pointer-events: none;
-        }
-
-        /* SECTIONS */
-        section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        h2 {
-            font-family: Orbitron;
-            font-size: 32px;
-            letter-spacing: 0.16em;
-            margin-bottom: 22px;
-            color: var(--white);
-        }
-
-        p {
-            font-size: 16px;
-            line-height: 1.9em;
-            max-width: 900px;
-            color: var(--white);
-        }
-
-        /* GRID + CARDS */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .card {
-            background: var(--green-card);
-            padding: 28px;
-            border-radius: 18px;
-            border: 1px solid var(--circuit-line);
-            backdrop-filter: blur(6px);
-            transition: 0.35s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            background: rgba(160, 220, 130, 0.6);
-        }
-
-        .card h3 {
-            font-family: Orbitron;
-            font-size: 18px;
-            margin-bottom: 12px;
-            letter-spacing: 0.1em;
-            color: var(--white);
-        }
-
-        .card p {
-            color: var(--white);
-            font-size: 15px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 36px;
-            border-top: 1px solid var(--circuit-line);
-            font-size: 14px;
-            color: var(--white);
-            background: rgba(0, 0, 0, 0.15);
-        }
-    </style>
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:36px;
+  border-top:1px solid var(--circuit);
+  background:rgba(0,0,0,.15);
+  font-size:14px;
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <ul>
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#services">SERVICES</a></li>
-            <li><a href="#products">PRODUCTS</a></li>
-            <li><a href="#contact">CONTACT</a></li>
-        </ul>
-    </nav>
+<nav class="navbar">
+<ul>
+<li><a href="#about">ABOUT</a></li>
+<li><a href="#services">SERVICES</a></li>
+<li><a href="#products">PRODUCTS</a></li>
+<li><a href="#contact">CONTACT</a></li>
+</ul>
+</nav>
 
-    <!-- HERO -->
-    <div class="hero">
-        <div class="hero-title">PYNX</div>
-    </div>
+<div class="hero">
+<div class="hero-title">PYNX</div>
+</div>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <h2>ABOUT US</h2>
-        <p>
-            PYNX is a technology-driven company focused on building
-            <strong>professional trading software, tools, and automation systems</strong>.
-            We deliver structured, scalable, and reliable solutions across
-            Crypto, Forex, and Indian markets.
-        </p>
-    </section>
+<section id="about">
+<h2>ABOUT US</h2>
+<p>
+PYNX is a technology-driven company focused on building
+<strong>professional trading software, tools, and automation systems</strong>.
+We deliver structured, scalable, and reliable solutions across
+Crypto, Forex, and Indian markets.
+<br><br>
+Our work is strictly software-based — covering strategy logic,
+automation frameworks, execution tools, and system-level trading solutions.
+</p>
+</section>
 
-    <!-- SERVICES -->
-    <section id="services">
-        <h2>SERVICES</h2>
-        <div class="services-grid">
-            <div class="card">
-                <h3>Trading Platform Development</h3>
-                <p>End-to-end trading software solutions for global markets.</p>
-            </div>
-            <div class="card">
-                <h3>Automation Systems</h3>
-                <p>Rule-based automation with professional execution control.</p>
-            </div>
-            <div class="card">
-                <h3>Strategy Engineering</h3>
-                <p>Market-structure, scalping and institutional logic systems.</p>
-            </div>
-            <div class="card">
-                <h3>Custom Software Tools</h3>
-                <p>Private tools, bots, indicators and algo utilities.</p>
-            </div>
-        </div>
-    </section>
+<section id="services">
+<h2>SERVICES</h2>
+<div class="services-grid">
+<div class="card">
+<h3>Trading Platform Development</h3>
+<p>End-to-end trading software solutions for Crypto, Forex, and Indian markets.</p>
+</div>
+<div class="card">
+<h3>Automation Systems</h3>
+<p>Rule-based trading automation with structured risk and execution control.</p>
+</div>
+<div class="card">
+<h3>Strategy Engineering</h3>
+<p>Scalping, hedging, grid, and market-structure based trading logic.</p>
+</div>
+<div class="card">
+<h3>Custom Software Tools</h3>
+<p>Private trading tools, bots, indicators, and system utilities.</p>
+</div>
+</div>
+</section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-        <h2>CONTACT</h2>
-        <p>
-            📲 Telegram: <strong>@PynxWealthtech</strong>
-        </p>
-    </section>
+<section id="products">
+<h2>PRODUCTS</h2>
+<div class="services-grid">
+<div class="card">
+<h3>Automated Trading Bots</h3>
+<p>Scalping • Hedging • Grid • GAP • One-Side • Sideways • Martingale</p>
+</div>
+<div class="card">
+<h3>TradingView Solutions</h3>
+<p>Indicators • Strategies • Backtesting Systems</p>
+</div>
+<div class="card">
+<h3>MT4 / MT5 Solutions</h3>
+<p>Expert Advisors • Forex Robots • Crypto Robots</p>
+</div>
+<div class="card">
+<h3>Algo Trading Software</h3>
+<p>Algo Bots • Automation • Execution Engines</p>
+</div>
+</div>
+</section>
 
-    <footer>
-        © 2025 PYNX — All Rights Reserved
-    </footer>
+<section id="contact">
+<h2>CONTACT</h2>
+<p>📲 Telegram: <strong>@PynxWealthtech</strong></p>
+</section>
+
+<footer>
+© 2025 PYNX — All Rights Reserved
+</footer>
 
 </body>
 </html>
