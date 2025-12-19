@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PYNX</title>
 
-<!-- Orbitron Font -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg-main:#7fbf5a;          /* exact green family */
-  --bg-dark:#5fa040;
+  --green-main:#7fbf5a;
+  --green-dark:#5fa040;
   --card-bg:rgba(200,255,200,0.18);
   --circuit:rgba(255,255,255,0.18);
   --white:#ffffff;
@@ -25,39 +24,37 @@ body{
   color:var(--white);
   background:
     radial-gradient(circle at center,rgba(200,255,180,.45),rgba(90,150,70,.95)),
-    linear-gradient(135deg,var(--bg-main),var(--bg-dark));
-  overflow-x:hidden;
+    linear-gradient(135deg,var(--green-main),var(--green-dark));
 }
 
-/* CIRCUIT FEEL (NOT GRID) */
+/* CIRCUIT FEEL */
 body::before{
   content:"";
   position:fixed;
   inset:0;
-  z-index:-1;
-  background-image:
+  background:
     linear-gradient(135deg,transparent 92%,var(--circuit) 93%),
     linear-gradient(45deg,transparent 94%,var(--circuit) 95%);
   background-size:120px 120px;
-  opacity:.45;
+  opacity:.4;
+  z-index:-1;
 }
 
 /* NAVBAR */
 .navbar{
   position:sticky;
   top:0;
-  z-index:10;
-  background:rgba(0,0,0,.15);
+  background:rgba(0,0,0,.2);
   backdrop-filter:blur(8px);
   border-bottom:1px solid var(--circuit);
 }
 .navbar ul{
   list-style:none;
-  margin:0;
-  padding:16px;
   display:flex;
   justify-content:center;
   gap:36px;
+  margin:0;
+  padding:16px;
 }
 .navbar a{
   color:var(--white);
@@ -73,39 +70,36 @@ body::before{
 }
 .hero-title{
   font-size:64px;
-  font-weight:700;
   letter-spacing:.34em;
+  font-weight:700;
   position:relative;
 }
-
-/* internal circuit glow */
 .hero-title::after{
   content:"";
   position:absolute;
   inset:0;
-  background:
-    linear-gradient(90deg,transparent 40%,rgba(255,255,255,.4) 50%,transparent 60%);
+  background:linear-gradient(90deg,transparent 40%,rgba(255,255,255,.4) 50%,transparent 60%);
   mix-blend-mode:overlay;
 }
 
 /* SECTIONS */
 section{
-  max-width:1100px;
+  max-width:1200px;
   margin:auto;
   padding:80px 20px;
 }
 h2{
   font-size:32px;
   letter-spacing:.16em;
-  margin-bottom:22px;
+  margin-bottom:25px;
 }
 p{
   font-size:16px;
   line-height:1.9em;
 }
 
-/* CARDS */
-.services-grid{
+/* GRID + CARDS */
+.grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
@@ -113,9 +107,9 @@ p{
 }
 .card{
   background:var(--card-bg);
-  padding:28px;
-  border-radius:20px;
   border:1px solid var(--circuit);
+  border-radius:20px;
+  padding:26px;
   backdrop-filter:blur(6px);
   transition:.35s;
 }
@@ -124,11 +118,8 @@ p{
 }
 .card h3{
   font-size:18px;
-  margin-bottom:14px;
   letter-spacing:.12em;
-}
-.card p{
-  font-size:15px;
+  margin-bottom:14px;
 }
 
 /* FOOTER */
@@ -136,7 +127,7 @@ footer{
   text-align:center;
   padding:36px;
   border-top:1px solid var(--circuit);
-  background:rgba(0,0,0,.15);
+  background:rgba(0,0,0,.2);
   font-size:14px;
 }
 </style>
@@ -164,31 +155,68 @@ PYNX is a technology-driven company focused on building
 <strong>professional trading software, tools, and automation systems</strong>.
 We deliver structured, scalable, and reliable solutions across
 Crypto, Forex, and Indian markets.
-<br><br>
-Our work is strictly software-based — covering strategy logic,
-automation frameworks, execution tools, and system-level trading solutions.
 </p>
 </section>
 
 <section id="services">
 <h2>SERVICES</h2>
-<div class="services-grid">
-<div class="card">
-<h3>Trading Platform Development</h3>
-<p>End-to-end trading software solutions for Crypto, Forex, and Indian markets.</p>
+<div class="grid">
+<div class="card"><h3>Trading Platform Development</h3><p>Complete trading software solutions.</p></div>
+<div class="card"><h3>Automation Systems</h3><p>Rule-based execution & risk control.</p></div>
+<div class="card"><h3>Strategy Engineering</h3><p>Scalping, hedging & structure logic.</p></div>
+<div class="card"><h3>Custom Software Tools</h3><p>Private bots, tools & utilities.</p></div>
 </div>
+</section>
+
+<section id="products">
+<h2>PRODUCTS</h2>
+<div class="grid">
+
 <div class="card">
-<h3>Automation Systems</h3>
-<p>Rule-based trading automation with structured risk and execution control.</p>
+<h3>Automated Trading Bots</h3>
+<p>Scalping • Hedging • Grid • GAP • One-side • Sideways • Martingale</p>
 </div>
+
 <div class="card">
-<h3>Strategy Engineering</h3>
-<p>Scalping, hedging, grid, and market-structure based trading logic.</p>
+<h3>TradingView Solutions</h3>
+<p>Indicators • Strategies • Backtesting Systems</p>
 </div>
+
 <div class="card">
-<h3>Custom Software Tools</h3>
-<p>Private trading tools, bots, indicators, and system utilities.</p>
+<h3>MT4 / MT5 Solutions</h3>
+<p>Expert Advisors • Forex Robots • Crypto Robots</p>
 </div>
+
+<div class="card">
+<h3>Algo Trading Software</h3>
+<p>Algo Bots • Automation • Custom Strategies</p>
+</div>
+
+<div class="card">
+<h3>Copy Trading Systems</h3>
+<p>Single & Multi Account Copy Trading</p>
+</div>
+
+<div class="card">
+<h3>Indicators & Market Logic</h3>
+<p>EMA • RSI • MACD • Fibonacci • Ichimoku • Elliott Wave</p>
+</div>
+
+<div class="card">
+<h3>Price Action & Structure</h3>
+<p>S&R • Supply Demand • Breakout • Retest • GAP Trading</p>
+</div>
+
+<div class="card">
+<h3>Risk & Trade Management</h3>
+<p>Position sizing • RR optimization • Partial exits</p>
+</div>
+
+<div class="card">
+<h3>Custom Algo Engineering</h3>
+<p>Tailor-made algorithms for MT4, MT5 & TradingView</p>
+</div>
+
 </div>
 </section>
 
