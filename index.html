@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PYNX Technologies</title>
+<title>PYNX</title>
 
+<!-- Orbitron Font -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --green-main:#7fcf8a;
-  --green-soft:rgba(140,220,160,0.55);
+  --bg-main:#7fbf5a;          /* exact green family */
+  --bg-dark:#5fa040;
+  --card-bg:rgba(200,255,200,0.18);
   --circuit:rgba(255,255,255,0.18);
   --white:#ffffff;
 }
@@ -19,24 +21,25 @@ html{scroll-behavior:smooth}
 
 body{
   margin:0;
-  font-family:Arial,sans-serif;
+  font-family:Orbitron,Arial,sans-serif;
   color:var(--white);
   background:
-    radial-gradient(circle at center,rgba(200,255,210,.35),rgba(70,130,90,.95)),
-    linear-gradient(135deg,#6fbf84,#3f7f5a);
+    radial-gradient(circle at center,rgba(200,255,180,.45),rgba(90,150,70,.95)),
+    linear-gradient(135deg,var(--bg-main),var(--bg-dark));
   overflow-x:hidden;
 }
 
-/* CIRCUIT BACKGROUND */
+/* CIRCUIT FEEL (NOT GRID) */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   z-index:-1;
   background-image:
-    repeating-linear-gradient(135deg,transparent 0 38px,var(--circuit) 39px 40px),
-    repeating-linear-gradient(45deg,transparent 0 58px,var(--circuit) 59px 60px);
-  opacity:.35;
+    linear-gradient(135deg,transparent 92%,var(--circuit) 93%),
+    linear-gradient(45deg,transparent 94%,var(--circuit) 95%);
+  background-size:120px 120px;
+  opacity:.45;
 }
 
 /* NAVBAR */
@@ -57,11 +60,10 @@ body::before{
   gap:36px;
 }
 .navbar a{
-  font-family:Orbitron;
-  font-size:13px;
-  letter-spacing:.16em;
-  text-decoration:none;
   color:var(--white);
+  text-decoration:none;
+  font-size:13px;
+  letter-spacing:.18em;
 }
 
 /* HERO */
@@ -70,18 +72,19 @@ body::before{
   padding:120px 20px 90px;
 }
 .hero-title{
-  font-family:Orbitron;
   font-size:64px;
   font-weight:700;
-  letter-spacing:.32em;
+  letter-spacing:.34em;
   position:relative;
 }
+
+/* internal circuit glow */
 .hero-title::after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    linear-gradient(90deg,transparent 42%,rgba(255,255,255,.35) 50%,transparent 58%);
+    linear-gradient(90deg,transparent 40%,rgba(255,255,255,.4) 50%,transparent 60%);
   mix-blend-mode:overlay;
 }
 
@@ -92,17 +95,16 @@ section{
   padding:80px 20px;
 }
 h2{
-  font-family:Orbitron;
   font-size:32px;
-  letter-spacing:.14em;
-  margin-bottom:20px;
+  letter-spacing:.16em;
+  margin-bottom:22px;
 }
 p{
   font-size:16px;
   line-height:1.9em;
 }
 
-/* GRID + CARDS */
+/* CARDS */
 .services-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -110,9 +112,9 @@ p{
   margin-top:40px;
 }
 .card{
-  background:var(--green-soft);
-  padding:26px;
-  border-radius:18px;
+  background:var(--card-bg);
+  padding:28px;
+  border-radius:20px;
   border:1px solid var(--circuit);
   backdrop-filter:blur(6px);
   transition:.35s;
@@ -121,10 +123,9 @@ p{
   transform:translateY(-8px);
 }
 .card h3{
-  font-family:Orbitron;
   font-size:18px;
-  margin-bottom:12px;
-  letter-spacing:.1em;
+  margin-bottom:14px;
+  letter-spacing:.12em;
 }
 .card p{
   font-size:15px;
@@ -187,28 +188,6 @@ automation frameworks, execution tools, and system-level trading solutions.
 <div class="card">
 <h3>Custom Software Tools</h3>
 <p>Private trading tools, bots, indicators, and system utilities.</p>
-</div>
-</div>
-</section>
-
-<section id="products">
-<h2>PRODUCTS</h2>
-<div class="services-grid">
-<div class="card">
-<h3>Automated Trading Bots</h3>
-<p>Scalping • Hedging • Grid • GAP • One-Side • Sideways • Martingale</p>
-</div>
-<div class="card">
-<h3>TradingView Solutions</h3>
-<p>Indicators • Strategies • Backtesting Systems</p>
-</div>
-<div class="card">
-<h3>MT4 / MT5 Solutions</h3>
-<p>Expert Advisors • Forex Robots • Crypto Robots</p>
-</div>
-<div class="card">
-<h3>Algo Trading Software</h3>
-<p>Algo Bots • Automation • Execution Engines</p>
 </div>
 </div>
 </section>
