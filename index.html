@@ -9,34 +9,39 @@
 
 <style>
 :root{
-  --green-main:#7fbf5a;
-  --green-dark:#5fa040;
-  --card-bg:rgba(200,255,200,0.18);
-  --circuit:rgba(255,255,255,0.18);
+  --green-main:#9fffe0;
+  --green-soft:#6deac3;
+  --green-dark:#04130e;
+  --glass:rgba(0,255,170,0.08);
+  --line:rgba(0,255,170,0.25);
   --white:#ffffff;
 }
 
+/* RESET */
 html{scroll-behavior:smooth}
+*{box-sizing:border-box}
 
+/* BODY */
 body{
   margin:0;
   font-family:Orbitron,Arial,sans-serif;
   color:var(--white);
   background:
-    radial-gradient(circle at center,rgba(200,255,180,.45),rgba(90,150,70,.95)),
-    linear-gradient(135deg,var(--green-main),var(--green-dark));
+    radial-gradient(circle at center, rgba(0,255,170,0.15), transparent 60%),
+    linear-gradient(180deg, #020b08, #000);
+  overflow-x:hidden;
 }
 
-/* CIRCUIT FEEL */
+/* TRON GRID / CIRCUIT */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    linear-gradient(135deg,transparent 92%,var(--circuit) 93%),
-    linear-gradient(45deg,transparent 94%,var(--circuit) 95%);
+    linear-gradient(90deg, transparent 96%, var(--line) 97%),
+    linear-gradient(0deg, transparent 96%, var(--line) 97%);
   background-size:120px 120px;
-  opacity:.4;
+  opacity:.25;
   z-index:-1;
 }
 
@@ -44,41 +49,65 @@ body::before{
 .navbar{
   position:sticky;
   top:0;
-  background:rgba(0,0,0,.2);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--circuit);
+  z-index:10;
+  background:rgba(0,0,0,.4);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
 }
 .navbar ul{
   list-style:none;
   display:flex;
   justify-content:center;
-  gap:36px;
+  gap:40px;
   margin:0;
-  padding:16px;
+  padding:18px;
 }
 .navbar a{
-  color:var(--white);
+  color:var(--green-soft);
   text-decoration:none;
   font-size:13px;
-  letter-spacing:.18em;
+  letter-spacing:.22em;
+  transition:.3s;
+}
+.navbar a:hover{
+  color:var(--green-main);
+  text-shadow:0 0 10px var(--green-main);
 }
 
 /* HERO */
 .hero{
+  height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:120px 20px 90px;
-}
-.hero-title{
-  font-size:64px;
-  letter-spacing:.34em;
-  font-weight:700;
   position:relative;
 }
+
+.hero-title{
+  font-size:72px;
+  letter-spacing:.45em;
+  font-weight:700;
+  color:var(--green-main);
+  text-shadow:
+    0 0 25px rgba(0,255,170,0.5),
+    0 0 60px rgba(0,255,170,0.25);
+  animation:fadeUp 1.5s ease;
+  position:relative;
+}
+
+/* TRON LIGHT SWEEP */
 .hero-title::after{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(90deg,transparent 40%,rgba(255,255,255,.4) 50%,transparent 60%);
+  background:linear-gradient(
+    90deg,
+    transparent 40%,
+    rgba(255,255,255,.6) 50%,
+    transparent 60%
+  );
+  animation:sweep 3s linear infinite;
   mix-blend-mode:overlay;
 }
 
@@ -86,49 +115,85 @@ body::before{
 section{
   max-width:1200px;
   margin:auto;
-  padding:80px 20px;
+  padding:90px 20px;
 }
 h2{
   font-size:32px;
-  letter-spacing:.16em;
-  margin-bottom:25px;
+  letter-spacing:.22em;
+  margin-bottom:30px;
+  color:var(--green-main);
+  text-shadow:0 0 15px rgba(0,255,170,.35);
 }
 p{
   font-size:16px;
   line-height:1.9em;
+  color:#e6fff7;
 }
 
-/* GRID + CARDS */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-  margin-top:40px;
+  gap:34px;
+  margin-top:50px;
 }
+
+/* CARDS – TRON GLASS */
 .card{
-  background:var(--card-bg);
-  border:1px solid var(--circuit);
-  border-radius:20px;
-  padding:26px;
-  backdrop-filter:blur(6px);
-  transition:.35s;
+  background:var(--glass);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:30px;
+  backdrop-filter:blur(10px);
+  transition:.4s ease;
+  position:relative;
+  overflow:hidden;
 }
+
+/* CARD GLOW LINE */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:22px;
+  background:linear-gradient(120deg, transparent, rgba(0,255,170,.4), transparent);
+  opacity:0;
+  transition:.4s;
+}
+
 .card:hover{
-  transform:translateY(-8px);
+  transform:translateY(-10px);
+  box-shadow:0 0 35px rgba(0,255,170,.25);
 }
+.card:hover::before{
+  opacity:1;
+}
+
 .card h3{
   font-size:18px;
-  letter-spacing:.12em;
-  margin-bottom:14px;
+  letter-spacing:.14em;
+  margin-bottom:16px;
+  color:var(--green-main);
 }
 
 /* FOOTER */
 footer{
   text-align:center;
-  padding:36px;
-  border-top:1px solid var(--circuit);
-  background:rgba(0,0,0,.2);
+  padding:40px;
+  border-top:1px solid var(--line);
+  background:rgba(0,0,0,.4);
   font-size:14px;
+  color:#bfffee;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(30px)}
+  to{opacity:1; transform:translateY(0)}
+}
+@keyframes sweep{
+  from{transform:translateX(-100%)}
+  to{transform:translateX(100%)}
 }
 </style>
 </head>
@@ -145,7 +210,7 @@ footer{
 </nav>
 
 <div class="hero">
-<div class="hero-title">PYNX</div>
+  <div class="hero-title">PYNX</div>
 </div>
 
 <section id="about">
@@ -171,52 +236,15 @@ Crypto, Forex, and Indian markets.
 <section id="products">
 <h2>PRODUCTS</h2>
 <div class="grid">
-
-<div class="card">
-<h3>Automated Trading Bots</h3>
-<p>Scalping • Hedging • Grid • GAP • One-side • Sideways • Martingale</p>
-</div>
-
-<div class="card">
-<h3>TradingView Solutions</h3>
-<p>Indicators • Strategies • Backtesting Systems</p>
-</div>
-
-<div class="card">
-<h3>MT4 / MT5 Solutions</h3>
-<p>Expert Advisors • Forex Robots • Crypto Robots</p>
-</div>
-
-<div class="card">
-<h3>Algo Trading Software</h3>
-<p>Algo Bots • Automation • Custom Strategies</p>
-</div>
-
-<div class="card">
-<h3>Copy Trading Systems</h3>
-<p>Single & Multi Account Copy Trading</p>
-</div>
-
-<div class="card">
-<h3>Indicators & Market Logic</h3>
-<p>EMA • RSI • MACD • Fibonacci • Ichimoku • Elliott Wave</p>
-</div>
-
-<div class="card">
-<h3>Price Action & Structure</h3>
-<p>S&R • Supply Demand • Breakout • Retest • GAP Trading</p>
-</div>
-
-<div class="card">
-<h3>Risk & Trade Management</h3>
-<p>Position sizing • RR optimization • Partial exits</p>
-</div>
-
-<div class="card">
-<h3>Custom Algo Engineering</h3>
-<p>Tailor-made algorithms for MT4, MT5 & TradingView</p>
-</div>
-
+<div class="card"><h3>Automated Trading Bots</h3><p>Scalping • Hedging • Grid • GAP • One-side • Sideways • Martingale</p></div>
+<div class="card"><h3>TradingView Solutions</h3><p>Indicators • Strategies • Backtesting Systems</p></div>
+<div class="card"><h3>MT4 / MT5 Solutions</h3><p>Expert Advisors • Forex Robots • Crypto Robots</p></div>
+<div class="card"><h3>Algo Trading Software</h3><p>Algo Bots • Automation • Custom Strategies</p></div>
+<div class="card"><h3>Copy Trading Systems</h3><p>Single & Multi Account Copy Trading</p></div>
+<div class="card"><h3>Indicators & Market Logic</h3><p>EMA • RSI • MACD • Fibonacci • Ichimoku • Elliott Wave</p></div>
+<div class="card"><h3>Price Action & Structure</h3><p>S&R • Supply Demand • Breakout • Retest • GAP Trading</p></div>
+<div class="card"><h3>Risk & Trade Management</h3><p>Position sizing • RR optimization • Partial exits</p></div>
+<div class="card"><h3>Custom Algo Engineering</h3><p>Tailor-made algorithms for MT4, MT5 & TradingView</p></div>
 </div>
 </section>
 
