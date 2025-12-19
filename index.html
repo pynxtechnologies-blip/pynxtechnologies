@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PYNX</title>
+    <title>PYNX Technologies</title>
 
     <!-- Orbitron Font -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary-green: #1f6f4a;
-            --soft-green: #dff3ea;
-            --circuit-line: rgba(31, 111, 74, 0.18);
-            --text-dark: #124a34;
+            --primary-green: #6fa84f;
+            --deep-green: #4f7f3a;
+            --soft-green: #dff1c8;
+            --circuit-line: rgba(255, 255, 255, 0.15);
+            --text-dark: #2f4f2f;
         }
 
         html {
@@ -24,10 +25,34 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.75),
-                    rgba(223, 243, 234, 0.95));
             color: var(--text-dark);
+
+            background:
+                radial-gradient(circle at center,
+                    rgba(200, 255, 170, 0.35),
+                    rgba(130, 190, 90, 0.9)),
+                linear-gradient(135deg,
+                    #7fbf5f,
+                    #5f9f45);
+
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        /* CIRCUIT OVERLAY */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+
+            background-image:
+                linear-gradient(to right, transparent 96%, var(--circuit-line) 100%),
+                linear-gradient(to bottom, transparent 96%, var(--circuit-line) 100%);
+
+            background-size: 60px 60px;
+            opacity: 0.35;
         }
 
         /* NAVBAR */
@@ -35,8 +60,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(6px);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--circuit-line);
         }
 
@@ -53,8 +78,8 @@
             text-decoration: none;
             font-family: Orbitron;
             font-size: 13px;
-            letter-spacing: 0.14em;
-            color: var(--primary-green);
+            letter-spacing: 0.16em;
+            color: var(--deep-green);
             transition: 0.3s;
         }
 
@@ -65,29 +90,33 @@
         /* HERO */
         .hero {
             text-align: center;
-            padding: 90px 20px 60px;
-            background-image:
-                linear-gradient(to right, transparent 95%, var(--circuit-line) 100%),
-                linear-gradient(to bottom, transparent 95%, var(--circuit-line) 100%);
-            background-size: 42px 42px;
+            padding: 120px 20px 90px;
+            background:
+                radial-gradient(circle at center,
+                    rgba(255, 255, 255, 0.25),
+                    transparent 70%);
         }
 
         .hero-title {
             font-family: Orbitron;
-            font-size: 58px;
+            font-size: 64px;
             font-weight: 700;
-            letter-spacing: 0.28em;
-            color: var(--primary-green);
+            letter-spacing: 0.32em;
+            color: var(--deep-green);
             position: relative;
+            display: inline-block;
         }
 
-        /* subtle internal circuit feel */
+        /* internal circuit feel */
         .hero-title::after {
             content: "";
             position: absolute;
             inset: 0;
             background:
-                linear-gradient(90deg, transparent 45%, rgba(31, 111, 74, 0.15) 50%, transparent 55%);
+                linear-gradient(90deg,
+                    transparent 42%,
+                    rgba(255, 255, 255, 0.25) 50%,
+                    transparent 58%);
             mix-blend-mode: overlay;
             pointer-events: none;
         }
@@ -96,20 +125,20 @@
         section {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 70px 20px;
         }
 
         h2 {
             font-family: Orbitron;
             font-size: 32px;
-            letter-spacing: 0.12em;
-            margin-bottom: 18px;
-            color: var(--primary-green);
+            letter-spacing: 0.14em;
+            margin-bottom: 20px;
+            color: var(--deep-green);
         }
 
         p {
             font-size: 16px;
-            line-height: 1.7em;
+            line-height: 1.8em;
             max-width: 900px;
         }
 
@@ -117,37 +146,39 @@
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 26px;
-            margin-top: 30px;
+            gap: 28px;
+            margin-top: 36px;
         }
 
         .card {
             background: rgba(255, 255, 255, 0.65);
-            padding: 24px;
-            border-radius: 14px;
+            padding: 26px;
+            border-radius: 16px;
             border: 1px solid var(--circuit-line);
             transition: 0.35s;
+            backdrop-filter: blur(6px);
         }
 
         .card:hover {
             transform: translateY(-6px);
-            border-color: var(--primary-green);
+            border-color: var(--deep-green);
         }
 
         .card h3 {
             font-family: Orbitron;
             font-size: 18px;
             margin-bottom: 10px;
-            color: var(--primary-green);
+            color: var(--deep-green);
             letter-spacing: 0.08em;
         }
 
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 34px;
             border-top: 1px solid var(--circuit-line);
             font-size: 14px;
             color: #4f7f69;
+            background: rgba(255, 255, 255, 0.55);
         }
     </style>
 </head>
@@ -197,13 +228,22 @@
             </div>
             <div class="card">
                 <h3>Strategy Engineering</h3>
-                <p>Scalping, grid, hedging, and market-structure based trading logic.</p>
+                <p>Market-structure, scalping, hedging, and professional trading logic.</p>
             </div>
             <div class="card">
                 <h3>Custom Software Tools</h3>
                 <p>Private trading tools, bots, indicators, and system utilities.</p>
             </div>
         </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+        <h2>PRODUCTS</h2>
+        <p>
+            We provide complete trading platform solutions for
+            <strong>Crypto | Forex | Indian Markets</strong>.
+        </p>
     </section>
 
     <!-- CONTACT -->
